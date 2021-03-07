@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin panel</title>
+    <link rel="icon" type="image/png" href="/icons-spring-logo.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+          integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid"></div>
+    <div class="navbar-header">
+        <p th:text="${userInfo.email} + ' with roles: ' + ${#strings.replace((userInfo.roles), 'ROLE_', '')}"
+           class="navbar-brand p-2"></p>
+    </div>
+    <div class="navbar-footer">
+        <a th:href="@{/logout}" class="text-white-50 text-decoration-none p-2">Logout</a>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col-2 mt-3 p-0">
+        <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+            <a class="nav-item nav-link active ml-2" data-toggle="pill" href="#user_panel" role="tab"
+               aria-controls="user_panel" aria-selected="true">User</a>
+        </div>
+    </div>
+    <div class="col-10 p-0">
+        <div class="tab-content bg-light p-2">
+            <div class="tab-pane fade show active pl-3" style="height: 700px;" id="user_panel"
+                 role="tabpanel" aria-labelledby="user_panel">
+                <h1>User information-page</h1>
+                <div class="border-top">
+                    <h3 class="p-3">About user</h3>
+                </div>
+                <div class="container-fluid p-4" style="background-color: #ffffff">
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr class="border-top">
+                            <th>ID</th>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Age</th>
+                            <th>E-mail</th>
+                            <th>Roles</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td th:text="${userInfo.id}"></td>
+                            <td th:text="${userInfo.firstname}"></td>
+                            <td th:text="${userInfo.lastname}"></td>
+                            <td th:text="${userInfo.age}"></td>
+                            <td th:text="${userInfo.email}"></td>
+                            <td th:text="${userInfo.roles}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+
